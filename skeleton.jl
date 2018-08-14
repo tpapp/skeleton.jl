@@ -1,5 +1,7 @@
 #!/usr/bin/env julia
 
+using Pkg
+
 minver = v"0.7-beta"
 
 err(msg) = (printstyled(stderr, msg * '\n'; bold = true, color = :blue); exit(1))
