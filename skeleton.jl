@@ -2,13 +2,13 @@
 
 using Pkg
 
-minver = v"0.7-beta"
+minver = v"0.7"
 
 err(msg) = (printstyled(stderr, msg * '\n'; bold = true, color = :blue); exit(1))
 
 VERSION ≥ minver || err("need at least version $(minver)")
 
-1 ≤ length(ARGS) ≤ 2 || err("Usage: julia skeleton.jl destination [template]")
+1 ≤ length(ARGS) ≤ 2 || err("Usage: [julia] skeleton.jl destination [template]")
 
 destdir = ARGS[1]
 
