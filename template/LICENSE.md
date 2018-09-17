@@ -1,4 +1,4 @@
-The SKELETON.jl package is licensed under the MIT "Expat" License:
+The {PKGNAME}.jl package is licensed under the MIT "Expat" License:
 
 > Copyright (c) 2018: Tamas K. Papp.
 >

@@ -22,7 +22,17 @@ if isempty(pkgname)
     pkgname = basename(dirname(destdir)) # trailing /
 end
 
-@info "package name is \"$(pkgname)\", using template \"$(template)\""
+function getgitopt(opt)
+    try
+        chomp(read(`git config --get $(opt)`, String))
+    catch
+        error(ArgumentError("couldn't get option $(opt)"))
+    end
+end
+
+ghuser = getgitopt("github.user")
+
+@info "package name is \"$(pkgname)\", using template \"$(template)\", github user \"$(ghuser)\""
 
 if isdir(destdir)
     @info "destination directory exists, skipping package generation"
@@ -35,6 +45,13 @@ const thisdir = @__DIR__
 
 srcroot = joinpath(thisdir, template)
 
+function replace_multiple(str, pairs)
+    for pair in pairs
+        str = replace(str, pair)
+    end
+    str
+end
+
 for (root, dirs, files) in walkdir(srcroot)
     relroot = relpath(root, srcroot)
     mkpath(normpath(destdir, relroot))
@@ -46,7 +63,8 @@ for (root, dirs, files) in walkdir(srcroot)
         else
             println("$(srcfile) -> $(destfile)")
             srcstring = read(srcfile, String)
-            deststring = replace(srcstring, "SKELETON" => pkgname)
+            deststring = replace_multiple(srcfile, ["{PKGNAME}" => pkgname,
+                                                    "{GHUSER}" => ghuser])
             write(destfile, deststring)
         end
     end

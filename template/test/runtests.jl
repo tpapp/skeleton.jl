@@ -1,2 +1,2 @@
-using SKELETON
+using {PKGNAME}
 using Test
