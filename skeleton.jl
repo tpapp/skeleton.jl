@@ -63,8 +63,8 @@ for (root, dirs, files) in walkdir(srcroot)
         else
             println("$(srcfile) -> $(destfile)")
             srcstring = read(srcfile, String)
-            deststring = replace_multiple(srcfile, ["{PKGNAME}" => pkgname,
-                                                    "{GHUSER}" => ghuser])
+            deststring = replace_multiple(srcstring, ["{PKGNAME}" => pkgname,
+                                                      "{GHUSER}" => ghuser])
             write(destfile, deststring)
         end
     end
