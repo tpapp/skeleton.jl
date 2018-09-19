@@ -80,5 +80,8 @@ srcdir = joinpath(@__DIR__, template)
 @info "copy and substitute" srcdir destdir replacements
 copy_and_substitute(srcdir, destdir, replacements)
 
-@info "calling git init"
+@info "git init, commit everything"
 run(`git init $destdir`)
+cd(destdir)
+run(`git add --all`)
+run(`git commit -am "Initial commit (skeleton.jl)."`)
