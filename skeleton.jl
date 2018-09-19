@@ -37,19 +37,24 @@ function replace_multiple(str, replacements)
     str
 end
 
-function copy_and_substitute(srcroot, destdir, replacements)
-    for (root, dirs, files) in walkdir(srcroot)
-        relroot = relpath(root, srcroot)
+"""
+Copy from `srcdir` to `destdir` recursively, making the substitutions of contents and
+filenames using `replacements`.
+"""
+function copy_and_substitute(srcdir, destdir, replacements)
+    for (root, dirs, files) in walkdir(srcdir)
+        relroot = relpath(root, srcdir)
         mkpath(normpath(destdir, relroot))
         for file in files
             srcfile = joinpath(root, file)
-            destfile = normpath(joinpath(destdir, relroot, file))
+            destfile = normpath(joinpath(destdir, relroot,
+                                         replace_multiple(file, replacements)))
             if isfile(destfile)
                 println("$(destfile) exists, skipping")
             else
-                println("$(srcfile) -> $(destfile)")
+                println("$(srcfile)  =>  $(destfile)")
                 srcstring = read(srcfile, String)
-                deststring = replace_multiple(srcstring, )
+                deststring = replace_multiple(srcstring, replacements)
                 write(destfile, deststring)
             end
         end
@@ -57,23 +62,23 @@ function copy_and_substitute(srcroot, destdir, replacements)
 end
 
 
-# replacements
-
-replacements = ["{UUID}" => uuid
-                "{PKGNAME}" => pkgname,
-                "{GHUSER}" => getgitopt("github.user"),
-                "{USERNAME}" => getgitopt("user.name"),
-                "{USEREMAIL}" => getgitopt("user.email")]
+# generate
 
 if isdir(destdir)
     @info "destination directory exists, skipping package generation"
     exit(0)
 end
 
-@info "replacements are" replacements
+replacements = ["{UUID}" => uuid1(),
+                "{PKGNAME}" => pkgname,
+                "{GHUSER}" => getgitopt("github.user"),
+                "{USERNAME}" => getgitopt("user.name"),
+                "{USEREMAIL}" => getgitopt("user.email")]
 
-srcroot = joinpath(@__DIR__, template)
-copy_and_substitute(srcroot, destdir, replacements)
+srcdir = joinpath(@__DIR__, template)
+
+@info "copy and substitute" srcdir destdir replacements
+copy_and_substitute(srcdir, destdir, replacements)
 
 @info "calling git init"
 run(`git init $destdir`)
