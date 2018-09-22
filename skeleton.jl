@@ -82,6 +82,6 @@ copy_and_substitute(srcdir, destdir, replacements)
 
 @info "git init"
 run(`git init $destdir`)
-#cd(destdir)
-#run(`git add --all`)
-#run(`git commit -am "Initial commit (skeleton.jl)."`)
+# cd(destdir)
+# run(`git add --all`)
+# run(`git commit -am "Initial commit (skeleton.jl)."`)

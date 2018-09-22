@@ -18,7 +18,7 @@ Then
 
 1. files in `template` will be copied recursively, with various substitutions which are in the source code as `replacements`.
 
-2. `git init` is called.
+2. A git repo is initialized.
 
 If the destination directory exists, the script aborts.
 
