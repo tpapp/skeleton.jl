@@ -1,3 +1,3 @@
-# ${PKGNAME}
+# {PKGNAME}
 
 *Documentation goes here.*

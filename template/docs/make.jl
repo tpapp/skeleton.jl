@@ -1,7 +1,7 @@
 makedocs(
     modules = [{PKGNAME}],
     format = :html,
-    sitename = "${PKGNAME}.jl",
+    sitename = "{PKGNAME}.jl",
     pages = Any["index.md"]
 )
 
