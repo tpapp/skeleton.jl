@@ -40,6 +40,7 @@ At this point, I have no intention of making this into a package, let alone regi
 
 Templates replace the following in files *and filenames*:
 
+| string        | replacement                                      |
 |---------------|--------------------------------------------------|
 | `{UUID}`      | a randomly generated UUID1                       |
 | `{PKGNAME}`   | name of the package, first command line argument |
