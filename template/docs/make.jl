@@ -1,3 +1,5 @@
+using Documenter, {PKGNAME}
+
 makedocs(
     modules = [{PKGNAME}],
     format = :html,
