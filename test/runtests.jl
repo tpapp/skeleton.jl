@@ -1,6 +1,12 @@
 # very informal testing, just see if things run
 
 BINPATH = normpath(joinpath(@__DIR__, "..", "skeleton.jl"))
+USERNAME = "Joe H. User"
+USEREMAIL = "test@email.domain"
+GHUSER = "somethingclever"
+run(`git config --add user.name $(USERNAME)`)
+run(`git config --add user.email $(USEREMAIL)`)
+run(`git config --add github.user $(GHUSER)`)
 
 # generate random package
 cd(tempdir())
