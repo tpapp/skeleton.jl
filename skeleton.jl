@@ -10,14 +10,13 @@ VERSION ≥ minver || err("need at least version $(minver)")
 1 ≤ length(ARGS) ≤ 2 || err("Usage: [julia] skeleton.jl destination [template]")
 destdir = ARGS[1]
 isfile(destdir) && err("destination $(destdir) is a file")
-template = length(ARGS) == 2 ? ARGS[2] : "template"
+srcdir = length(ARGS) == 2 ? ARGS[2] : joinpath(@__DIR__, "template")
 pkgname = basename(destdir)
 
 if isempty(pkgname)
     pkgname = basename(dirname(destdir)) # add trailing /
 end
 
-
 # utility functions
 
 "Get an option from `git`."
@@ -74,8 +73,6 @@ replacements = ["{UUID}" => uuid1(),
                 "{GHUSER}" => getgitopt("github.user"),
                 "{USERNAME}" => getgitopt("user.name"),
                 "{USEREMAIL}" => getgitopt("user.email")]
-
-srcdir = joinpath(@__DIR__, template)
 
 @info "copy and substitute" srcdir destdir replacements
 copy_and_substitute(srcdir, destdir, replacements)
