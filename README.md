@@ -6,7 +6,7 @@
 ![Lifecycle](https://img.shields.io/badge/lifecycle-retired-orange.svg)
 ![Lifecycle](https://img.shields.io/badge/lifecycle-archived-red.svg)
 ![Lifecycle](https://img.shields.io/badge/lifecycle-dormant-blue.svg) -->
-[![Build Status](https://travis-ci.org/tpapp/skeleton.jl.svg?branch=master)](https://travis-ci.org/{GHUSER}/{PKGNAME}.jl)
+[![Build Status](https://travis-ci.org/tpapp/skeleton.jl.svg?branch=master)](https://travis-ci.org/tpapp/skeleton.jl)
 
 Julia script for creating new packages quickly. **Needs at least Julia version v0.7-beta**.
 
