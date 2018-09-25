@@ -9,11 +9,11 @@ setgitopt(name, value) = run(`git config --global --add $(name) $(value)`)
 # generate random package
 cd(tempdir())
 pkgname = string(rand('A':'Z', 5)...)
-run(`$(BINPATH) $(pkgname)`)
-cd(pkgname)
 setgitopt("user.name", USERNAME)
 setgitopt("user.email", USEREMAIL)
 setgitopt("github.user", GHUSER)
+run(`$(BINPATH) $(pkgname)`)
+cd(pkgname)
 
 # test documentation generation
 run(`julia --project=docs -e 'using Pkg; Pkg.instantiate()'`)
