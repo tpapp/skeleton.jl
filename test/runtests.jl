@@ -15,9 +15,10 @@ setgitopt("github.user", GHUSER)
 run(`$(BINPATH) $(pkgname)`)
 cd(pkgname)
 
-# test documentation generation
+@info "test documentation (instantiation)"
 run(`julia --project=docs -e 'using Pkg; Pkg.instantiate()'`)
+@info "test documentation (generation)"
 run(`julia --project=docs --color=yes docs/make.jl`)
 
-# test that coverage is instantiated (not generating or submitting)
+@info "test coverage (only instantiation)"
 run(`julia --project=test/coverage -e 'using Pkg; Pkg.instantiate()'`)
