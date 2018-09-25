@@ -4,15 +4,16 @@ BINPATH = normpath(joinpath(@__DIR__, "..", "skeleton.jl"))
 USERNAME = "Joe H. User"
 USEREMAIL = "test@email.domain"
 GHUSER = "somethingclever"
-run(`git config --add user.name $(USERNAME)`)
-run(`git config --add user.email $(USEREMAIL)`)
-run(`git config --add github.user $(GHUSER)`)
+setgitopt(name, value) = run(`git config --add $(name) $(value)`)
 
 # generate random package
 cd(tempdir())
 pkgname = string(rand('A':'Z', 5)...)
 run(`$(BINPATH) $(pkgname)`)
 cd(pkgname)
+setgitopt("user.name", USERNAME)
+setgitopt("user.email", USEREMAIL)
+setgitopt("github.user", GHUSER)
 
 # test documentation generation
 run(`julia --project=docs -e 'using Pkg; Pkg.instantiate()'`)
