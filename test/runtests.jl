@@ -4,7 +4,7 @@ BINPATH = normpath(joinpath(@__DIR__, "..", "skeleton.jl"))
 USERNAME = "Joe H. User"
 USEREMAIL = "test@email.domain"
 GHUSER = "somethingclever"
-setgitopt(name, value) = run(`git config --add $(name) $(value)`)
+setgitopt(name, value) = run(`git config --global --add $(name) $(value)`)
 
 # generate random package
 cd(tempdir())
