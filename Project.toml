@@ -1,0 +1,6 @@
+authors = ["Tamas K. Papp <tkpapp@gmail.com>"]
+name = "skeleton"
+uuid = "ef1ed356-c090-11e8-1652-a95965932f8d"
+version = "0.1.0"
+
+[deps]
