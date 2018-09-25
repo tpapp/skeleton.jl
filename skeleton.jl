@@ -84,7 +84,7 @@ copy_and_substitute(srcdir, destdir, replacements)
 run(`git init $destdir`)
 
 @info "adding documenter (completing the Manifest.toml for docs)"
-run(`julia --project=$(joinpath(destdir, "docs")) -e 'import Pkg; Pkg.add("Documenter")`)
+run(`julia --project=$(joinpath(destdir, "docs")) -e 'import Pkg; Pkg.add("Documenter")'`)
 # cd(destdir)
 # run(`git add --all`)
 # run(`git commit -am "Initial commit (skeleton.jl)."`)
