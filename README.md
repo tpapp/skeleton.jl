@@ -12,7 +12,7 @@ Julia script for creating new packages quickly. **Needs at least Julia version v
 
 ## Installation
 
-This is not a package, just a script. Clone from the repository, eg
+This is **not a package, just a script**. Clone from the repository, eg
 
 ```sh
 git clone https://github.com/tpapp/skeleton.jl.git
@@ -44,7 +44,7 @@ For the default template, you need to set the `git` configuration variables `use
 
 [KISS](https://en.wikipedia.org/wiki/KISS_principle): does nothing more than substitute strings into templates. For me, this covers 99% of the use cases; the rest I edit manually.
 
-At this point, I have no intention of making this into a package, let alone registering it.
+~~At this point, I have no intention of making this into a package, let alone registering it.~~ Eating my words here: since I realized I need unit tests, this may evolve into a package. But not in the medium run.
 
 Templates replace the following in files *and filenames*:
 
