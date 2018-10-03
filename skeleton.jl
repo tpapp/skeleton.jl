@@ -2,6 +2,17 @@
 
 using Pkg, UUIDs
 
+# print some version information for debugging
+
+githash =
+    try
+        chomp(read(`git log -n 1 --pretty=format:"%H" $(@__DIR__)`, String))
+    catch
+        "(not a repo)"
+    end
+
+@info "skeleton.jl" Julia_VERSION = VERSION githash = githash
+
 # sanity checks and parsing input arguments
 
 minver = v"0.7"
@@ -81,7 +92,7 @@ copy_and_substitute(srcdir, destdir, replacements)
 run(`git init $destdir`)
 
 @info "adding documenter (completing the Manifest.toml for docs)"
-run(`julia --project=$(joinpath(destdir, "docs")) -e 'import Pkg; Pkg.add("Documenter")'`)
+run(`$(Base.julia_cmd()) --project=$(joinpath(destdir, "docs")) -e 'import Pkg; Pkg.add("Documenter")'`)
 # cd(destdir)
 # run(`git add --all`)
 # run(`git commit -am "Initial commit (skeleton.jl)."`)
