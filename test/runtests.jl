@@ -16,7 +16,7 @@ run(`$(BINPATH) $(pkgname)`)
 cd(pkgname)
 
 @info "test documentation (instantiation)"
-run(`julia --project=docs -e 'using Pkg; Pkg.instantiate()'`)
+run(`julia --project=docs -e 'using Pkg; Pkg.instantiate(); Pkg.develop(PackageSpec(path=pwd()))'`)
 @info "test documentation (generation)"
 run(`julia --project=docs --color=yes docs/make.jl`)
 
