@@ -1,6 +1,6 @@
 #!/usr/bin/env julia
 
-using Pkg, UUIDs
+using Pkg
 
 # print some version information for debugging
 
@@ -79,7 +79,7 @@ if isdir(destdir)
     exit(0)
 end
 
-replacements = ["{UUID}" => uuid1(),
+replacements = ["{UUID}" => Pkg.METADATA_compatible_uuid(pkgname),
                 "{PKGNAME}" => pkgname,
                 "{GHUSER}" => getgitopt("github.user"),
                 "{USERNAME}" => getgitopt("user.name"),
