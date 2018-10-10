@@ -6,7 +6,7 @@ using Pkg
 
 githash =
     try
-        chomp(read(`git log -n 1 --pretty=format:"%H" $(@__DIR__)`, String))
+        chomp(read(`git -C $(@__DIR__) log -n 1 --pretty=format:"%H"`, String))
     catch
         "(not a repo)"
     end
