@@ -6,7 +6,8 @@ using Pkg
 
 githash =
     try
-        chomp(read(`git -C $(@__DIR__) log -n 1 --pretty=format:"%H"`, String))
+        skeletondir = @__DIR__
+        chomp(read(`git -C $skeletondir log -n 1 --pretty=format:"%H"`, String))
     catch
         "(not a repo)"
     end
