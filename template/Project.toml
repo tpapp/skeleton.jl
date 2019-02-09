@@ -1,7 +1,6 @@
 name = "{PKGNAME}"
 uuid = "{UUID}"
 authors = ["{USERNAME} <{USEREMAIL}>"]
-version = "0.1.0"
 
 [deps]
 
