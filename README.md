@@ -1,17 +1,17 @@
-# skeleton.jl
-
-![Lifecycle](https://img.shields.io/badge/lifecycle-archived-red.svg)
-[![Build Status](https://travis-ci.org/tpapp/skeleton.jl.svg?branch=master)](https://travis-ci.org/tpapp/skeleton.jl)
-
-Julia script for creating new packages quickly. **Needs at least Julia version v0.7-beta**.
-
-## IMPORTANT — ARCHIVED
+# IMPORTANT — ARCHIVED
 
 This software has been superseded by the packaged version of the same concept, available at
 
 https://github.com/tpapp/PkgSkeleton.jl
 
 The repository is now archived.
+
+# skeleton.jl
+
+![Lifecycle](https://img.shields.io/badge/lifecycle-archived-red.svg)
+[![Build Status](https://travis-ci.org/tpapp/skeleton.jl.svg?branch=master)](https://travis-ci.org/tpapp/skeleton.jl)
+
+Julia script for creating new packages quickly. **Needs at least Julia version v0.7-beta**.
 
 ## Installation
 
